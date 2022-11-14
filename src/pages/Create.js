@@ -14,6 +14,43 @@ export default function Create() {
     const store = useAppContext();
     const navigate = useNavigate();
 
+    const inputStyles = {
+        formContainer: {
+            width: "400px",
+            margin: "0 auto",
+        },
+
+        container: {
+            display: "flex",
+            flexDirection: "column",
+            gap: "5px",
+            margin: "15px 0",
+        },
+
+        title: {
+            fontSize: "16px",
+            textAlign: "left",
+            color: "white",
+        },
+
+        input: {
+            padding: "10px",
+            borderRadius: "5px",
+            fontSize: "16px",
+        },
+    };
+
+    const button = {
+        padding: "15px 20px",
+        minWidth: "200px",
+        border: "none",
+        borderRadius: "5px",
+        backgroundColor: "#1e9638",
+        color: "white",
+        fontWeigth: "bolder",
+        fontSize: "18px",
+    };
+
     function handleChange(e) {
         const name = e.target.name;
         const value = e.target.value;
@@ -70,39 +107,39 @@ export default function Create() {
 
     return(
         <Layout>
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <div>Title</div>
-                    <input type="text" name="title" onChange={handleChange} value={title}/>
+            <form onSubmit={handleSubmit} style={inputStyles.formContainer}>
+                <div style={inputStyles.container}>
+                    <div style={inputStyles.title}>Title</div>
+                    <input type="text" name="title" onChange={handleChange} value={title} style={inputStyles.input}/>
                 </div>
 
-                <div>
-                    <div>Author</div>
-                    <input type="text" name="author" onChange={handleChange} value={author}/>
+                <div style={inputStyles.container}>
+                    <div style={inputStyles.title}>Author</div>
+                    <input type="text" name="author" onChange={handleChange} value={author} style={inputStyles.input}/>
                 </div>
 
-                <div>
-                    <div>Cover</div>
-                    <input type="file" name="cover" onChange={handleOnChangeFile}/>
+                <div style={inputStyles.container}>
+                    <div style={inputStyles.title}>Cover</div>
+                    <input style={inputStyles.input} type="file" name="cover" onChange={handleOnChangeFile}/>
                     <div>{!! cover ? <img src={cover} width="200" alt="preview"/> : ''}</div>
                 </div>
 
-                <div>
-                    <div>Intro</div>
-                    <input type="text" name="intro" onChange={handleChange} value={intro}/>
+                <div style={inputStyles.container}>
+                    <div style={inputStyles.title}>Intro</div>
+                    <input style={inputStyles.input} type="text" name="intro" onChange={handleChange} value={intro}/>
                 </div>
 
                 <div>
-                    <div>Completed</div>
+                    <div style={inputStyles.title}>Completed</div>
                     <input type="checkbox" name="completed" onChange={handleChange} value={completed}/>
                 </div>
 
-                <div>
-                    <div>Review</div>
-                    <input type="text" name="review" onChange={handleChange} value={review}/>
+                <div style={inputStyles.container}>
+                    <div style={inputStyles.title}>Review</div>
+                    <input style={inputStyles.input} type="text" name="review" onChange={handleChange} value={review}/>
                 </div>
 
-                <input type="submit" value="Register books"/>
+                <input style={button} type="submit" value="Register books"/>
             </form>
         </Layout>
     );
